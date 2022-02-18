@@ -1,7 +1,4 @@
 import Head from 'next/head'
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -12,14 +9,15 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <div>
       <Head>
-        <title>Tailwind Experiment</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Experimenting with Tailwind</title>
+        <link rel="icon" href="/favicon-master_transparent.png" />
+        {/* Inter font */}
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
 
-
+      {/* page content */}
       <section className="py-12 bg-gray-50 overflow-hidden md:py-20 lg:py-24">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <svg
@@ -50,14 +48,13 @@ export default function Home() {
           <div className="relative">
             <img
               className="mx-auto h-8"
-              src="https://tailwindui.com/img/logos/workcation-logo-indigo-600-mark-gray-800-and-indigo-600-text.svg"
-              alt="Workcation"
+              src="/informed-logo.png"
+              alt="Informed.co"
             />
             <blockquote className="mt-10">
               <div className="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900">
                 <p>
-                  &ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente
-                  alias molestiae. Numquam corrupti in laborum sed rerum et corporis.&rdquo;
+                  &ldquo;By using Informed.co, our sales have grown 30% year over year. And we absolutely attribute that growth to the utilization of this software. With Informed.co, we're on autopilot and it ensures that our listings are shown prominently and at competitive prices.&rdquo;
                 </p>
               </div>
               <footer className="mt-8">
@@ -65,18 +62,18 @@ export default function Home() {
                   <div className="md:flex-shrink-0">
                     <img
                       className="mx-auto h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src="/nadja-slack-emote.png"
                       alt=""
                     />
                   </div>
                   <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-                    <div className="text-base font-medium text-gray-900">Judith Black</div>
+                    <div className="text-base font-medium text-gray-900">Brian Gluck</div>
 
-                    <svg className="hidden md:block mx-1 h-5 w-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="hidden md:block mx-1 h-5 w-5 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M11 0h3L9 20H6l5-20z" />
                     </svg>
 
-                    <div className="text-base font-medium text-gray-500">CEO, Workcation</div>
+                    <div className="text-base font-medium text-gray-500">Owner, ProjectorScreen.com</div>
                   </div>
                 </div>
               </footer>
