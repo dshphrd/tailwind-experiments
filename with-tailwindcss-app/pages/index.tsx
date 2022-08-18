@@ -1,10 +1,12 @@
 import Head from 'next/head'
+import { Fragment } from 'react'
+import { Popover, Transition } from '@headlessui/react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import CalloutSection from '../components/callout-with-stat-section'
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'The Dispatch', href: 'https://buttondown.email/MutualAidLA/archive/' },
+  { name: 'Contribute', href: 'https://www.gofundme.com/f/mutualaidla' }
 ]
 
 export default function Home() {
@@ -18,70 +20,134 @@ export default function Home() {
       </Head>
 
       {/* page content */}
-      <section className="py-12 bg-gray-50 overflow-hidden md:py-20 lg:py-24">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <svg
-            className="absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2"
-            width={404}
-            height={404}
-            fill="none"
-            viewBox="0 0 404 404"
-            role="img"
-            aria-labelledby="svg-workcation"
-          >
-            <title id="svg-workcation">Workcation</title>
-            <defs>
-              <pattern
-                id="ad119f34-7694-4c31-947f-5c9d249b21f3"
-                x={0}
-                y={0}
-                width={20}
-                height={20}
-                patternUnits="userSpaceOnUse"
-              >
-                <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width={404} height={404} fill="url(#ad119f34-7694-4c31-947f-5c9d249b21f3)" />
-          </svg>
+      <div className="relative bg-[#FAD60C] overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative z-10 pb-8 bg-[#FAD60C] sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full">
+            <svg
+              className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-[#FF5B2B] transform translate-x-1/2"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <polygon points="50,0 100,0 50,100 0,100" />
+            </svg>
 
-          <div className="relative">
-            <img
-              className="mx-auto h-8"
-              src="/informed-logo.png"
-              alt="Informed.co"
-            />
-            <blockquote className="mt-10">
-              <div className="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900">
-                <p>
-                  &ldquo;By using Informed.co, our sales have grown 30% year over year. And we absolutely attribute that growth to the utilization of this software. With Informed.co, we're on autopilot and it ensures that our listings are shown prominently and at competitive prices.&rdquo;
-                </p>
+            <Popover>
+              <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
+                <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+                  <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                    <div className="flex items-center justify-between w-full md:w-auto">
+                      <a href="#">
+                        <span className="sr-only">Workflow</span>
+                        <img
+                          alt="Workflow"
+                          className="h-8 w-auto sm:h-16"
+                          src="/MALAN_Logo_yellowbox_whitebackground.png"
+                        />
+                      </a>
+                      <div className="-mr-2 flex items-center md:hidden">
+                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                          <span className="sr-only">Open main menu</span>
+                          <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                        </Popover.Button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+                    {navigation.map((item) => (
+                      <a key={item.name} href={item.href} className="font-medium text-slate-800 hover:text-slate-900" target="_blank">
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                </nav>
               </div>
-              <footer className="mt-8">
-                <div className="md:flex md:items-center md:justify-center">
-                  <div className="md:flex-shrink-0">
-                    <img
-                      className="mx-auto h-10 w-10 rounded-full"
-                      src="/nadja-slack-emote.png"
-                      alt=""
-                    />
-                  </div>
-                  <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-                    <div className="text-base font-medium text-gray-900">Brian Gluck</div>
 
-                    <svg className="hidden md:block mx-1 h-5 w-5 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M11 0h3L9 20H6l5-20z" />
-                    </svg>
-
-                    <div className="text-base font-medium text-gray-500">Owner, ProjectorScreen.com</div>
+              <Transition
+                as={Fragment}
+                enter="duration-150 ease-out"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="duration-100 ease-in"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Popover.Panel
+                  focus
+                  className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+                >
+                  <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                    <div className="px-5 pt-4 flex items-center justify-between">
+                      <div>
+                        <img
+                          className="h-14 w-auto"
+                          src="/MALAN_Logo_yellowbox_whitebackground.png"
+                          alt=""
+                        />
+                      </div>
+                      <div className="-mr-2">
+                        <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                          <span className="sr-only">Close main menu</span>
+                          <XIcon className="h-6 w-6" aria-hidden="true" />
+                        </Popover.Button>
+                      </div>
+                    </div>
+                    <div className="px-2 pt-2 pb-3 space-y-1">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
+                    <a
+                      href="#"
+                      className="block w-full px-5 py-3 text-center font-medium text-[#FF5B2B] bg-slate-50 hover:bg-slate-100"
+                    >
+                      Contribute
+                    </a>
                   </div>
-                </div>
-              </footer>
-            </blockquote>
+                </Popover.Panel>
+              </Transition>
+            </Popover>
+
+            <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-20">
+              <div className="sm:text-center lg:text-left">
+                <h1 className="text-4xl tracking-tight font-bold text-slate-800 sm:text-5xl sm:tracking-tight md:text-6xl md:tracking-tight">
+                  <span className="block xl:inline">LA Mutual Aid</span>{' '}
+                  <span className="block text-[#FF5B2B] xl:inline">Network</span>
+                </h1>
+                <p className="mt-3 text-base tracking-tight text-slate-800 sm:mt-5 sm:max-w-lg sm:mx-auto md:text-lg md:mt-5 lg:mx-0">
+                  We’ve been doing some recalibrating and reorganizing over the last few months and are almost ready to present a whole menu of ways folks can get involved with Mutual Aid LA.<br/><br/>We encourage you to take a look at all of the published <a href="https://buttondown.email/MutualAidLA/archive/" className="font-medium underline underline-offset-2 transition hover:text-[#FF5B2B]">Mutual Aid LA Dispatches</a> and use them to find groups doing work in your neighborhood or just doing work that interests you.
+                </p>
+                {/* <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                  <div>
+                    <a
+                      href="#"
+                      className="w-full flex items-center justify-center px-8 py-3 border-2 border-white text-base rounded-md text-slate-700 bg-white bg-opacity-50 hover:bg-white hover:text-slate-800 md:text-lg transition"
+                    >
+                      Contribute
+                    </a>
+                  </div>
+                </div> */}
+              </div>
+            </main>
           </div>
         </div>
-      </section>
-
+        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+          <img
+            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+            src="/rita-vicari-m6RCv8K0rTM-unsplash.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      
+      <CalloutSection />
     </div>
   )
 }
